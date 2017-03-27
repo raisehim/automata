@@ -7,27 +7,8 @@
             "type": "node",
             "request": "launch",
             "stopOnEntry": false,
-            "program": "${workspaceRoot}/kokomo.request.broker.js",
-            "args": [
-                "LOCAL",
-                //"pvp"
-                //"roa"
-                //"event"
-                //"account",
-                //"arena",
-                //"shop",
-                //"guild",
-                //"unlock",
-                //"spawner",
-                //"hero",
-                //"camp",
-                //"mission",
-                //"community",
-                //"billing",
-                //"heroshop",
-                //"mailbox",
-                //"contentreset"
-            ],
+            "program": "${workspaceRoot}/test.js",
+            "args": [],
             "runtimeArgs": [
                 "--nolazy",
                 "--trace-warnings"

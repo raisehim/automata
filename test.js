@@ -7,7 +7,7 @@ const cube_size = 3;
 const cube = new Cube(cube_size);
 
 console.log("Initial States: ", cube);
-console.log(require('util').inspect(cube, { showHidden: false, depth: 4 }));
+// console.log(require('util').inspect(cube, { showHidden: false, depth: 4 }));
 
 let person = new Person(cube);
 //console.log(person.zone().code);
@@ -26,6 +26,8 @@ process.stdin.on('keypress', (str, key) => {
         case 'down':
         case 'left':
         case 'right':
+        case 'pageup':
+        case 'pagedown':
             person.move(key.name);
             person.where();
             break;
@@ -33,6 +35,12 @@ process.stdin.on('keypress', (str, key) => {
             if (key.ctrl) process.emit('SIGINT');
             break;
         default:
-            console.log(str, key);
+        // console.log(str, key);
     }
 });
+
+let primes = [];
+for (let i = 2; i < 100; i++) {
+    if (primes.every(p => i % p != 0)) primes.push(i);
+}
+// console.log(JSON.stringify(primes));
