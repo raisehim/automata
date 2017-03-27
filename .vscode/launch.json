@@ -1,0 +1,65 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "protocol": "legacy",
+            "type": "node",
+            "request": "launch",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/kokomo.request.broker.js",
+            "args": [
+                "LOCAL",
+                //"pvp"
+                //"roa"
+                //"event"
+                //"account",
+                //"arena",
+                //"shop",
+                //"guild",
+                //"unlock",
+                //"spawner",
+                //"hero",
+                //"camp",
+                //"mission",
+                //"community",
+                //"billing",
+                //"heroshop",
+                //"mailbox",
+                //"contentreset"
+            ],
+            "runtimeArgs": [
+                "--nolazy",
+                "--trace-warnings"
+            ],
+            "env": {
+                "NODE_ENV": "production"
+            },
+            "skipFiles": [
+                "<node_internals>/**/*.js",
+                "node_modules/**/*.js"
+            ]
+        } /*,
+        {
+            "name": "Test Guild",
+            "type": "node2",
+            "request": "launch",
+            "stopOnEntry": false,
+            "program": "${workspaceRoot}/unittest.js",
+            "args": [
+                "LOCAL",
+                "guild",
+                "TEST_GUILD_QUIT"
+            ],
+            "cwd": "${workspaceRoot}",
+            "runtimeArgs": [
+                "--nolazy",
+                "--trace-warnings"
+            ],
+            "env": {
+                "NODE_ENV": "production"
+            },
+            "smartStep": true
+        }*/
+    ]
+}

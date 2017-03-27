@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "javascript.validate.enable": false,
+    "editor.detectIndentation": false,
+    "eslint.autoFixOnSave": false,
+    "files.exclude": {
+        "**/.svn": true
+    },
+    "search.exclude": {
+        //"**/node_modules": false,
+        "**/docs": true
+    },
+    "debug.inlineValues": true,
+    "npm-intellisense.showBuildInLibs": true
+}
