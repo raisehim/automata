@@ -1,46 +1,38 @@
 'use strict';
 
-const cube = [], cube_size = 3, directions = 4;
-const states = Math.pow(cube_size, cube_size);
-console.log("Initial States: ", states);
+const Cube = require('./Cube.class');
+const Person = require('./Person.class');
 
-let base = 0, map = {}; // directions 
-for (let x = 0; x < cube_size; x++) {
-    for (let y = 0; y < cube_size; y++) {
-        for (let z = 0; z < cube_size; z++) {
-            base = x * (cube_size * cube_size) + y * cube_size + z + 1;
-            map[base] = {
-                c: `${x + 1}.${y + 1}.${z + 1}`,
-                u: `${x + 1}.${y + 1}.${z + 1 + 1}`,
-                n: `${x + 1}.${y + 1 - 1}.${z + 1}`,
-                w: `${x + 1 - 1}.${y + 1}.${z + 1}`,
-                s: `${x + 1}.${y + 1 + 1}.${z + 1}`,
-                e: `${x + 1 + 1}.${y + 1}.${z + 1}`,
-                d: `${x + 1}.${y + 1}.${z + 1 - 1}`
-            };
-        }
-    }
-}
-console.log(require('util').inspect(map, { showHidden: false, depth: 4 }));
+const cube_size = 3;
+const cube = new Cube(cube_size);
 
-let c, m;
-let seed = 1000 + Math.random(0, 1) * 9000 | 0;
-for (let x = 0; x < cube_size; x++) {
-    let ax = [];
-    cube.push(ax);
-    for (let y = 0; y < cube_size; y++) {
-        let ay = [];
-        ax.push(ay);
-        for (let z = 0; z < cube_size; z++) {
-            base = x * (cube_size * cube_size) + y * cube_size + z + 1;
-            m = Object.assign({}, map[base]);
-            Object.keys(m).forEach(direction => {
-                m[direction] = (m[direction].split(".").every((p) => p | 0 > 0 && (p | 0) <= cube_size)) ? m[direction] : null;
-            });
-            ay.push(m);
-        }
-    }
-}
+console.log("Initial States: ", cube);
 console.log(require('util').inspect(cube, { showHidden: false, depth: 4 }));
 
-// let seed = 
+let person = new Person(cube);
+//console.log(person.zone().code);
+//console.log(require('util').inspect(person.now(map), { showHidden: false, depth: 4 }));
+
+const readline = require('readline');
+process.on('SIGINT', () => process.exit());
+readline.emitKeypressEvents(process.stdin);
+// console.log("ReadLine TTY: ", process.stdin.isTTY);
+if (process.stdin.isTTY) process.stdin.setRawMode(true);
+
+person.where();
+process.stdin.on('keypress', (str, key) => {
+    switch (key.name) {
+        case 'up':
+        case 'down':
+        case 'left':
+        case 'right':
+            person.move(key.name);
+            person.where();
+            break;
+        case 'c':
+            if (key.ctrl) process.emit('SIGINT');
+            break;
+        default:
+            console.log(str, key);
+    }
+});
