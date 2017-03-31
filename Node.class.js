@@ -5,6 +5,7 @@ class Node {
         this.vector = [x, y, z];
         this.range = cube_size;
         this.zone = y * (this.range * this.range) + z * this.range + x + 1;
+        this.m = this.vector.map((m) => (Math.random(0, 1) + m) * 100 | 0);
     }
 
     equal(vector) {
@@ -30,7 +31,7 @@ class Node {
     }
 
     inspect() {
-        return `${this.zone}:${this.vector.join("x")}`;
+        return `${this.zone}:${this.vector.join("x")}:${this.m.join(", ")}`;
     }
 }
 

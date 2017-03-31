@@ -49,10 +49,11 @@ class Cube {
     }
 
     code(position) {
-        return this.zone(position).zone;
+        return this.zone(position).m.join(":") + "=" + this.zone(position).zone;
     }
 
     inspect() {
+        // console.log(this.map);
         return [this.cube_size, this.cube_size].join("x");
     }
 
